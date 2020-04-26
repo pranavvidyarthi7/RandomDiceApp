@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
-  return runApp(
-    MaterialApp(
-      home: Scaffold(
+  return runApp(MaterialApp(home: MyApp()));
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+        seconds: 5,
+        navigateAfterSeconds: Home(),
+        image: Image.asset('images/icon.png'));
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.red,
+      appBar: AppBar(
+        title: Text('Dicee'),
         backgroundColor: Colors.red,
-        appBar: AppBar(
-          title: Text('Dicee'),
-          backgroundColor: Colors.red,
-        ),
-        body: DicePage(),
       ),
-    ),
-  );
+      body: DicePage(),
+    );
+  }
 }
 
 class DicePage extends StatefulWidget {
